@@ -10,30 +10,6 @@
 <meta property="og:image" content="images/BlackPeppercorns.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<script>
-/* Motion preference: follow the OS "reduce motion" setting, unless the visitor
-   turned animations on (toggle bottom-left, or add ?motion=on to the URL). */
-(function () {
-  var d = document.documentElement;
-  var os = window.matchMedia('(prefers-reduced-motion: reduce)').matches, o = null;
-  try { o = localStorage.getItem('motion'); } catch (e) {}
-  if (/[?&]motion=on/.test(location.search)) o = 'on';
-  var reduce = o === 'off' || (os && o !== 'on');
-  if (reduce) d.classList.add('reduce-motion');
-  if (os) d.classList.add('os-reduce');
-  document.addEventListener('DOMContentLoaded', function () {
-    var b = document.getElementById('motionToggle');
-    if (!b) return;
-    b.querySelector('span').textContent = reduce ? 'Animations off · Turn on' : 'Animations on · Turn off';
-    b.setAttribute('aria-pressed', String(!reduce));
-    b.addEventListener('click', function () {
-      try { localStorage.setItem('motion', reduce ? 'on' : 'off'); } catch (e) {}
-      history.replaceState(null, '', location.pathname + location.hash);
-      location.reload();
-    });
-  });
-})();
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -45,11 +21,9 @@
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
-<button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false"><i aria-hidden="true"></i><span>Animations</span></button>
-
 <nav>
   <div class="nav-inner">
-    <a class="brand" href="#top"><b>Pure</b>&nbsp;· Estate Black Pepper</a>
+    <a class="brand" href="#top" aria-label="Qalb Spices — home"><img class="brand-logo" src="images/qalb-logo.png" alt="" width="391" height="440"><span><b>Qalb</b>&nbsp;Spices</span></a>
     <div class="nav-links">
       <a href="#crisis">The Problem</a>
       <a href="#origin">Origin</a>
@@ -288,7 +262,7 @@
 <footer>
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      <a class="brand" href="#top"><b>Pure</b>&nbsp;· Estate Black Pepper</a>
+      <a class="brand" href="#top" aria-label="Qalb Spices — home"><img class="brand-logo" src="images/qalb-logo.png" alt="" width="391" height="440"><span><b>Qalb</b>&nbsp;Spices</span></a>
       Single-origin, vine-ripened black pepper from the Western Ghats — graded, lab-verified and packed by the gram.
     </div>
     <div class="foot-links">
